@@ -1,0 +1,498 @@
+% grep -o -h -r "geom_[^(]*(" . --include="*R" | sort | uniq
+\documentclass[10pt]{beamer}
+
+\input{../STAT200/header.tex}
+
+%\title{Evolutionary inference reveals mtDNA gene retention dependence on hydrophobicity, GC content, and control of complex assembly}
+\title{Visualisation with \texttt{ggplot2}: A primer}
+\institute{\vspace{-0.8cm} \\ \large Iain Johnston \vspace{0.25cm} \\ \scriptsize Department of Mathematics\\ University of Bergen\\ \vspace{0.4cm}} %\includegraphics[width=0.6\textwidth]{funders.png} }
+\date{}
+%\date{}
+
+% The main document
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}{Hello!}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      Disclaimer: I have no formal training in data visualization and everything here will be principles I work to and approaches I use, rather than a rigorous and complete syllabus on data visualization theory and practice. For that (and ECTS credits) look to \url{https://vis.uib.no/teaching/}.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \includegraphics[width=\linewidth]{ex-published.png}
+    \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Why do we produce plots?}
+\end{frame}
+
+\begin{frame}{Why do we produce plots?}
+      \begin{itemize}
+      \item To summarise and convey data
+      \item To turn data into information
+      \item To tell a story
+        \item[]
+      \end{itemize}
+      \includegraphics[width=\linewidth]{ex-1.png}
+\end{frame}
+
+\begin{frame}{Why do we produce plots?}
+      \begin{itemize}
+      \item To summarise and convey data
+      \item To turn data into information
+      \item To tell a story
+        \item ... clearly, transparently, honestly, reproducably, beautifully, pre-empting questions
+      \end{itemize}
+      \includegraphics[width=\linewidth]{ex-2.png}
+\end{frame}
+
+\begin{frame}{Why do we produce plots?}
+      \begin{itemize}
+      \item `Friends don't let friends' (Chenxin Li) \url{https://github.com/cxli233/FriendsDontLetFriends}
+        \item Complete ggplot tutorial \url{http://r-statistics.co/Complete-Ggplot2-Tutorial-Part1-With-R-Code.html}
+      \end{itemize}
+\end{frame}
+
+
+\begin{frame}{Basic principles: aesthetic}
+    \begin{itemize}[<+->]
+    \item \textbf{Motivation:} A reader will, at first, only spend a couple of seconds glancing at your figure.
+      \item That's whether they're skimming an article, looking around at posters, or looking at your slide while they're watching you talk
+      \item Even if they spend longer, the easier the messages come through, the better
+      \item \textbf{Therefore:} The big picture should be clear and get the most important message, and as much transparent support as you can provide, across at a glance
+        \item It should also look cool! Especially if your reader's attention is tempted elsewhere (it is)
+      \item A figure is not just an image! In written work, the caption is essential too (art museums). In oral work, your description plays this role.
+      \end{itemize}
+\end{frame}
+
+
+\begin{frame}{Basic principles: aesthetic}
+    \begin{itemize}
+    \item Match scales, colours, fonts (basically, consistent style)
+    \item Have information occupy most of the plot
+    \item Plot as close to individual datapoints as possible
+    \item Every approximation (especially smoothing) needs explicit mention
+    \item Define all degrees of freedom (only) in figure caption / oral commentary
+      \item Consider accessibility
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}{Basic principles: aesthetic}
+    \begin{itemize}
+    \item Match scales, colours, fonts (basically, consistent style)
+    \end{itemize}
+    \includegraphics[width=\textwidth]{bad-1.png}
+\end{frame}
+\begin{frame}{Basic principles: aesthetic}
+    \begin{itemize}
+    \item Match scales, colours, fonts (basically, consistent style)
+    \end{itemize}
+    \includegraphics[width=.4\textwidth]{peppa1.jpg} \\
+    \figcred{Peppa goes to London}
+\end{frame}
+\begin{frame}{Basic principles: aesthetic}
+    \begin{itemize}
+    \item Match scales, colours, fonts (basically, consistent style)
+    \end{itemize}
+    \includegraphics[width=.4\textwidth]{peppa2.jpg} \\
+        \figcred{Peppa goes to London}
+\end{frame}\begin{frame}{Basic principles: aesthetic}
+    \begin{itemize}
+    \item Match scales, colours, fonts (basically, consistent style)
+    \end{itemize}
+    \includegraphics[width=.6\textwidth]{peppa3.jpg} \\
+        \figcred{Peppa goes to London}
+\end{frame}
+\begin{frame}{Basic principles: aesthetic}
+    \begin{itemize}
+    \item Match scales, colours, fonts (basically, consistent style)
+    \end{itemize}
+    \centering
+        \includegraphics[width=.6\textwidth]{encode.png} \\
+    \includegraphics[width=.6\textwidth]{serum_project_logo.jpg} \\
+    \figcred{\url{https://www.cshl.edu/encode3-interpreting-the-human-and-mouse-genomes/}, \url{https://www.nist.gov/image/serum-project-logo}}
+\end{frame}
+
+\begin{frame}{Basic principles: aesthetic}
+  \begin{columns}
+    \begin{column}{0.6\textwidth}
+    \begin{itemize}
+    \item Fonts: just use Arial (or Helvetica, though it is slightly more embellished)
+    \item Serifs are for guiding the eye through large blocks of text; they complicate text in small sections
+    \item Myriad Pro (Illustrator default) looks like we're learning letters in primary school
+      \item DejaVu Sans (matplotlib default) looks like the font designer is still learning letters (and kerning) in primary school
+    \end{itemize}
+    \end{column}
+    \begin{column}{0.6\textwidth}
+      \includegraphics[width=\linewidth]{sans-serifs.png}
+    \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Basic principles: aesthetic}
+    \begin{itemize}
+    \item Have information occupy most of the plot
+    \end{itemize}
+    \includegraphics[width=\textwidth]{bad-2.png}
+\end{frame}
+
+\begin{frame}{Basic principles: aesthetic}
+    \begin{itemize}
+    \item Plot as close to individual datapoints as possible
+    \end{itemize}
+    \includegraphics[width=\textwidth]{bad-3.png}
+\end{frame}
+\begin{frame}{Basic principles: aesthetic}
+    \begin{itemize}
+    \item Plot as close to individual datapoints as possible
+    \item Showing more data is better; showing less data is worse
+  \item If you want to summarise, why not do both?
+    \end{itemize}
+ \centering
+    \includegraphics[width=0.6\linewidth]{sems.jpg}
+ 
+ \mycite{\emph{Common Misconceptions about Data Analysis and Statistics}, Motulsky, J Pharm Expt Therap 351 200 (2014)}
+\end{frame}
+
+\begin{frame}{Basic principles: aesthetic}
+    \begin{itemize}
+    \item Every approximation (especially smoothing) needs explicit mention. What parameters did you use? (Without knowing?)
+    \end{itemize}
+    \includegraphics[width=\textwidth]{bad-4.png}
+\end{frame}
+\begin{frame}{Basic principles: aesthetic}
+    \begin{itemize}
+    \item Every approximation (especially smoothing) needs explicit mention. What parameters did you use? (Without knowing?)
+    \end{itemize}
+    \includegraphics[width=\textwidth]{bad-5.png}
+\end{frame}
+\begin{frame}{Basic principles: aesthetic}
+    \begin{itemize}
+    \item Every approximation (especially smoothing) needs explicit mention. What parameters did you use? (Without knowing?)
+    \end{itemize}
+    \includegraphics[width=\textwidth]{bad-6.png}
+\end{frame}
+
+\begin{frame}{Basic principles: aesthetic}
+    \begin{itemize}
+    \item Define all degrees of freedom (only) in figure caption / oral commentary
+    \end{itemize}
+    \includegraphics[width=\textwidth]{text-embedding.png}
+\end{frame}
+
+\begin{frame}{Basic principles: aesthetic}
+    \begin{itemize}
+    \item Define all degrees of freedom (only) in figure caption / oral commentary
+      \item Information flow: the figure (image + caption) must give the message on its own -- it's all that some people will read. That message can then be `cited' in the main text
+    \end{itemize}
+    \centering
+    \includegraphics[width=.6\textwidth]{text-embedding.png}
+\end{frame}
+
+
+\begin{frame}{Basic principles: production}
+    \begin{itemize}
+    \item We'll use R and \texttt{ggplot2} (and additions)
+      \item Part of the \texttt{tidyverse}
+      \item Strongest for 2D plots; for 3D, consider looking elsewhere
+            \item Aim to make all code and data for a project public, and to have a single script that produces all the display items for the paper
+            \item FAIR reporting; but this also helps investigation!
+              
+    \end{itemize}
+    \includegraphics[width=.7\textwidth]{fair.png}
+\end{frame}
+
+\begin{frame}{Basic principles: production}
+    \begin{itemize}[<+->]
+      \item We need a file output for basically all purposes except live production
+    \item Bitmap/raster (JPG, TIFF, PNG, GIF, PSD) vs vector (PS, EPS, PDF, AI, SVG) formats
+    \item I recommend PNG\footnote{JPG loses info; TIFF compression hard to implement in R} and SVG(lite)
+    \item Have your script get as close to published figure as possible (\texttt{ggpubr} for panels, annotation etc)
+    \item One image file per figure
+      \item For bitmaps, fix image size (in pixels), although journals will require 300dpi. 2490 pixels is A4 width at 300dpi
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Basic principles: production}
+    \begin{itemize}
+    \item My approach:
+    \item[] \texttt{\textcolor{red}{png}("filename.png", width=\textcolor{blue}{400}*\textcolor{orange}{sf}, height=\textcolor{blue}{300}*\textcolor{orange}{sf}, res=72*\textcolor{orange}{sf})}
+      \item[] \texttt{print(} (plot command) \texttt{)}
+      \item[] \texttt{dev.off()}
+      \item \texttt{\textcolor{red}{png}} sets output `terminal' to PNG file
+      \item \textcolor{blue}{400 $\times$ 300} gives aspect ratio and scale of graphical elements; adjust to style output. Don't rescale in post-processing!
+      \item \texttt{\textcolor{orange}{sf}} scales resolution, \emph{keeping those features intact}
+        \item Also consider \texttt{ggsave}
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}{Basic principles: input data for \texttt{ggplot2}}
+  \begin{itemize}
+        \item What are the types of variables to plot? Continuous, discrete, factor, other? This determines plot types
+    \item Long (not wide) data frames
+      \item Every row is a datapoint; (possibly many) columns describe predictors and labels
+    \item \texttt{reshape2} and \texttt{dplyr} offer functions to convert (pivot, melt, reshape)
+    \end{itemize}
+    \includegraphics[width=.55\textwidth]{wide-data.png}     \includegraphics[width=.4\textwidth]{long-data.png} \\
+    \figcred{https://www.rforecology.com/post/reshaping-data-in-r/}
+\end{frame}
+
+\begin{frame}{Basic principles: \texttt{ggplot2}}
+    \begin{itemize}
+    \item `Grammar of graphics' (Leland Wilkinson, 2005)
+    \item Idea: build up graphics using system of elements (data, geometric objects, styling features, ...) combined using given rules
+    \item Effectively: the final plot is an object which is built by adding the output of different functions
+    \item Each function controls some elements of the grammar, specifying the details of our plot
+      \item We'll look at a subset. Online searches are your (and my!) friend for completeness (remember to cite sources though!)
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Basic principles: \texttt{ggplot2}}
+    \begin{itemize}
+    \item \textcolor{red}{Plot command} + \textcolor{blue}{data} + \textcolor{brown}{mapping/aesthetic} + \textcolor{purple}{geoms} + \textcolor{gray}{styling options}
+    \item \texttt{\textcolor{red}{ggplot(}\textcolor{blue}{data = my.df,} \textcolor{brown}{mapping = aes(x=x, y=y)}\textcolor{red}{)} \textcolor{purple}{+ geom\_point()} \textcolor{gray}{+ theme\_light()}}
+    \item Implicit: \texttt{\textcolor{red}{ggplot(}\textcolor{blue}{my.df,} \textcolor{brown}{aes(x=x, y=y)}\textcolor{red}{)} \textcolor{purple}{+ geom\_point()}}\textcolor{gray}{\texttt{+ theme\_light()}}
+    \item \textcolor{red}{Plot command} + \textcolor{blue}{data} hopefully intuitive
+    \item \textcolor{brown}{mapping/aesthetic} defines which columns in the data correspond to which aspects of the plot
+    \item \textcolor{purple}{geoms} define which types of plot we're producing and specify overall presentational aspects for the data
+      \item \textcolor{gray}{styling options} set presentational aspects additional to the data (axes, frame, fonts, etc)
+        \end{itemize}
+\end{frame}
+
+\begin{frame}{Basic principles: \texttt{ggplot2}}
+  \begin{itemize}
+  \item Let's try it!
+    \item[] \texttt{library(ggplot2)}
+    \item[] \texttt{my.df = data.frame(x=1:10, y=1:10+rnorm(10))}
+    \item[] \texttt{\textcolor{red}{ggplot(}\textcolor{blue}{my.df,} \textcolor{brown}{aes(x=x, y=y)}\textcolor{red}{)} \textcolor{purple}{+ geom\_point()}}\textcolor{gray}{\texttt{+ theme\_light()}}
+         \end{itemize}
+\end{frame}
+
+\begin{frame}{Data styling}
+    \begin{itemize}
+    \item Geoms have a set of `attributes' which may be connected to data (via \texttt{aes}) or specified otherwise
+      \item[] e.g. \texttt{geom\_point(aes(x=x,y=y,colour=group), size=2, alpha=0.5)}
+    \item Common ones:
+      \begin{itemize}
+      \item \texttt{size}
+      \item \texttt{fill}
+      \item \texttt{colour}
+      \item \texttt{alpha}
+      \item \texttt{shape}
+      \end{itemize}
+      \item Size is relative (to dimensions of plot) -- this will change for different output size/resolution combinations!
+      \item Colour can be specified in several ways: some names (\texttt{red}, \texttt{green} etc), \texttt{\#RRGGBB}, \texttt{\#RRGGBBAA} 
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Exercise}
+  \begin{itemize}
+  \item Continuous-continuous data
+    \item[] \texttt{data(mtcars)}
+    \item \texttt{mtcars} has data on several car models. \texttt{mpg} (miles per gallon), \texttt{disp} displacement, \texttt{cyl} number of cylinders
+     \item Graphically explore the relationship between these. Can you reproduce these plots?
+  \end{itemize}
+  \includegraphics[width=\linewidth]{exercise-cars.png}
+\end{frame}
+
+\begin{frame}{\texttt{geom\_...} for continuous-continuous}
+    \begin{itemize}
+    \item \texttt{point}: points
+    \item \texttt{line}: lines (connecting points by $x$)
+       \item \texttt{path}: path (connecting point by order in data)
+        \item \texttt{segment}: line segments (specifying start and end points \texttt{xend, yend})
+       \item \texttt{smooth}: smoothed lines, including regression (\texttt{method=''lm''})
+             \item \texttt{tile}: filled tiles (specifying fill colour \texttt{fill}); also \texttt{rect}
+               \item \texttt{text}, \texttt{label}, \texttt{text\_repel}*: text (specifying text \texttt{label}) with and without box, and avoiding overlaps
+                 \item \texttt{bin\_2d}: density of points in 2D space
+               \end{itemize}
+\end{frame}
+
+
+\begin{frame}{\texttt{geom\_...} for continuous-continuous}
+  \includegraphics[width=\textwidth]{cont-cont.png}
+\end{frame}
+
+\begin{frame}{\texttt{geom\_...} for factor-continuous}
+    \begin{itemize}
+    \item \texttt{point}: points
+      \item \texttt{col}: columns
+    \item \texttt{jitter} and \texttt{beeswarm}*: points arranged to avoid overlaps
+       \item \texttt{boxplot}: box plots
+             \item \texttt{violin}: violin plots
+    \item \texttt{histogram}: histogram (consider \texttt{bins})
+              \end{itemize}
+\end{frame}
+
+\begin{frame}{\texttt{geom\_...} for factor-continuous}
+  \includegraphics[width=\textwidth]{fact-cont.png}
+\end{frame}
+
+\begin{frame}{Exercise}
+  \begin{itemize}
+  \item Factor-continuous data
+    \item[] \texttt{data(PlantGrowth)}
+    \item \texttt{PlantGrowth} has data on plant yield under different treatments (and control). \texttt{weight} is yield (dry weight), \texttt{group} is treatment
+     \item Graphically explore the relationship between these. Can you reproduce this plot?
+  \end{itemize}
+  \includegraphics[width=.5\linewidth]{exercise-growth.png}
+\end{frame}
+
+\begin{frame}{\texttt{geom\_...} for continuous-continuous-continuous}
+  \begin{itemize}
+  \item Takes $x,y$ scatter and works with point density:
+    \begin{itemize}
+                     \item \texttt{bin\_2d}: filled rectangles
+                     \item \texttt{hex}: filled hexagons
+                       \item \texttt{geom\_density\_2d}, \texttt{geom\_density\_2d\_filled}: contours (after smoothing)
+    \end{itemize}
+  \item Takes $x,y,z$ data (can be produced from above by smoothing):
+    \begin{itemize}
+      \item \texttt{tile} and \texttt{rect} as before
+                 \item \texttt{contour}, \texttt{label\_contour}*: contour plots
+    \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{\texttt{geom\_...} for continuous-continuous-continuous}
+  \includegraphics[width=\textwidth]{cont-cont-z.png}
+\end{frame}
+
+\begin{frame}{Plot theme styling: arrangements}
+    \begin{itemize}
+    \item Organise a set of plots in 1D: \texttt{facet\_wrap($\sim$ variable)}
+      \item Organise a set of plots in 2D: \texttt{facet\_grid(var1 $\sim$ var2)}
+      \item Organise generally: \texttt{ggarrange(g.1, g.2, }...\texttt{)}
+        \item For example, \texttt{\textcolor{blue}{ggarrange(g.1, }\textcolor{red}{ggarrange(g.2, g.3, labels=c(``B'', ``C''), nrow=2)}\textcolor{blue}{, labels=c(``A'', ``''), widths=c(1,2), nrow=1)}}
+    \end{itemize}
+    \includegraphics[width=\textwidth]{arrangement.png}
+\end{frame}
+
+\begin{frame}{Which geoms?}
+  \includegraphics[width=\linewidth]{ggplot-examples.png}
+  \end{frame}
+
+\begin{frame}{Which geoms?}
+  \includegraphics[width=\linewidth]{ggplot-advanced.png}
+  \end{frame}
+
+\begin{frame}{Plot theme styling}
+    \begin{itemize}
+    \item Every part of the plot is addressable as an element
+    \item Overall \texttt{theme\_}...\texttt{()}: \texttt{light}, \texttt{minimal}, \texttt{bw}, \texttt{classic}
+    \item \texttt{theme(}...\texttt{)}:
+      \begin{itemize}
+      \item \texttt{legend.position = ``none''}
+      \item \texttt{axis.text.x = element\_text(size=12, angle=45, hjust=1)}
+      \item \texttt{axis.line.x = element\_line(color = ``\#AAAAAA'')}
+        \item \texttt{axis.title.x = element\_text(size=24,color = ``\#AAAAAA'')}
+      \end{itemize}
+      \end{itemize}
+\end{frame}
+
+\begin{frame}{Plot theme styling}
+  \includegraphics[width=.9\textwidth]{theme_elements.png} \\
+  \figcred{Henry Wang, henrywang.nl}
+  \end{frame}
+
+\begin{frame}{Plot theme styling: axes}
+    \begin{itemize}
+    \item Some useful tweaks:
+    \item \texttt{labs(x=``x label'', y=``y label'', color=``colour scale label'', fill=``fill scale label''}, ...\texttt{)}
+    \item \texttt{xlim(0, 100)}, \texttt{ylim(0, NA)} (also \texttt{lims})
+    \item \texttt{scale\_x\_continuous(trans = ``log'')} -- log (or other) transformation
+    \item \texttt{scale\_x\_continuous(expand = c(0.1, 0.1))} -- expand axis (e.g. to fit labels)
+           \item \texttt{scale\_x\_continuous(breaks = c(0, 1, 2, 3), labels=c("Reference", "Early", "Late", "Complete"))} -- custom ticks
+           \item \texttt{theme(axis.text.x = element\_text(angle=45, hjust=1))} -- diagonal tick labels
+           \item For discrete scales, factor levels will be plotted in their internal order. (Re)set with
+             \item[] \texttt{f = factor(f, levels=c(``First level'', ``Second level''))}
+      \end{itemize}
+\end{frame}
+
+\begin{frame}{Exercise}
+  \begin{itemize}
+  \item Continuous-continuous data
+    \item[] \texttt{data(mtcars)}
+    \item \texttt{mtcars} has data on several car models. \texttt{mpg} (miles per gallon), \texttt{disp} displacement, \texttt{cyl} number of cylinders
+     \item Graphically explore the relationship between these. Can you reproduce this plot?
+  \end{itemize}
+  \includegraphics[width=.5\linewidth]{exercise-cars2.png}
+\end{frame}
+
+\begin{frame}{Colours}
+   \begin{itemize}
+   \item We think differently about continuous and discrete scales
+   \item For both, we can tell ggplot a set of colours, or a scheme, that defines a scale
+     \item \texttt{scale\_fill\_gradient}, \texttt{gradient2}, \texttt{gradientn}: specify low-high, low-mid-high, custom colours
+     \item \texttt{scale\_fill\_viridis}*: specify option (default, inferno, ...)
+     \item Replace \texttt{fill} with \texttt{colour} as required
+     \item For factor variables with viridis, use \texttt{discrete=TRUE}
+       \item I like viridis; also consider ColorBrewer
+     \end{itemize}
+\end{frame}
+
+\begin{frame}{Colours}
+  \includegraphics[width=\linewidth]{ggplot-colours.png}
+\end{frame}
+
+\begin{frame}{Colours}
+   \begin{itemize}
+   \item Perception: consider (maximising) distinctions in hue and brightness
+     \end{itemize}
+   \includegraphics[width=.8\linewidth]{colour-scales.png}
+   \figcred{Introduction to the viridis color maps, Bob Rudis, Noam Ross and Simon Garnier}
+\end{frame}
+
+\begin{frame}{Colours}
+   \begin{itemize}
+   \item Perception: consider (maximising) distinctions in hue and brightness
+     \item Consider colourblind viewers / black-and-white prints \url{https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html}
+     \end{itemize}
+   \includegraphics[width=.8\linewidth]{viridis-scales.png}
+   \figcred{Introduction to the viridis color maps, Bob Rudis, Noam Ross and Simon Garnier}
+\end{frame}
+
+\begin{frame}{Exercise}
+  \begin{itemize}
+  \item What's going on here?
+    \end{itemize}
+  \includegraphics[width=.4\linewidth]{ggplot-plant.png}   \includegraphics[width=.4\linewidth]{new-phyt-cover.jpg}
+\end{frame}
+
+\begin{frame}{Summaries}
+    \begin{itemize}
+    \item Match scales, colours, fonts (basically, consistent style)
+    \item Have information occupy most of the plot
+    \item Plot as close to individual datapoints as possible
+    \item Every approximation (especially smoothing) needs explicit mention
+    \item Define all degrees of freedom (only) in figure caption / oral commentary
+    \item Consider accessibility
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Summaries}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+    \begin{itemize}
+      \item \textcolor{red}{Plot command} + \textcolor{blue}{data} + \textcolor{brown}{mapping/aesthetic} + \textcolor{purple}{geoms} + \textcolor{gray}{styling options}
+      \item Consider PNG and SVG(lite)
+      \item Use the internet!
+        \item Be creative, transparent, and thoughtful!
+    \end{itemize}
+    \end{column}
+      \begin{column}{0.5\textwidth}
+        \includegraphics[width=\linewidth]{ggplot-rw-ex.png}
+      \end{column}
+  \end{columns}
+  \centering
+  \includegraphics[width=.8\linewidth]{ggplot-rw2.png}
+\end{frame}
+
+
+
+\end{document}
