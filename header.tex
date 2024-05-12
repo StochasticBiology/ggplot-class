@@ -1,0 +1,113 @@
+\usetheme{Singapore} %-wolverine}
+\usecolortheme{seahorse}
+
+
+    \setbeamertemplate{headline}
+    {%
+%       \begin{beamercolorbox}[ht=3.5ex,dp=1.125ex,%
+%           leftskip=.3cm,rightskip=.3cm plus1fil]{section in head/foot}
+%         \usebeamerfont{section in head/foot}\usebeamercolor[fg]{section in head/foot}%
+%         \insertsectionhead
+ %      \end{beamercolorbox}%
+       \begin{beamercolorbox}[colsep=1.5pt]{middle separation line head}
+       \end{beamercolorbox}
+       \begin{beamercolorbox}[ht=2.5ex,dp=1.125ex,%
+         leftskip=.3cm,rightskip=.3cm plus1fil]{subsection in head/foot}
+         \usebeamerfont{subsection in head/foot}\insertsubsectionhead
+       \end{beamercolorbox}%
+       \begin{beamercolorbox}[colsep=1.5pt]{lower separation line head}
+       \end{beamercolorbox}
+    }
+    
+\usepackage{color}
+\usepackage{times}
+\usepackage{hyperref}
+\usepackage{tikz}
+\renewcommand{\arraystretch}{1.5}
+
+\newcommand{\meanw}{\langle w \rangle}
+\newcommand{\meanm}{\langle m \rangle}
+\newcommand{\vw}{\langle \xi_w^2 \rangle}
+\newcommand{\vm}{\langle \xi_m^2 \rangle}
+\newcommand{\vwm}{\langle \xi_w \xi_m \rangle}
+\newcommand{\meanh}{\langle h \rangle}
+\newcommand{\vh}{\langle h^2 \rangle}
+\newcommand{\eh}{\langle h \rangle}
+\newcommand{\vwp}{\langle w^2 \rangle}
+\newcommand{\vmp}{\langle m^2 \rangle}
+\newcommand{\meanwm}{\langle w + m \rangle}
+\newcommand{\vwmp}{\langle (w + m)^2 \rangle}
+\newcommand{\cmwmp}{\langle m (w + m) \rangle}
+\newcommand{\cwm}{\langle w m \rangle}
+
+\newcommand{\mycode}[1]{\texttt{#1}}
+\newcommand{\mycodex}[1]{\texttt{\textcolor{red}{#1}}}
+\newcommand{\mycite}[1]{\small{[\textcolor{gray}{#1}]} \normalsize}
+\newcommand{\mynote}[1]{\textcolor{red}{(#1)}}
+\newcommand{\myanswer}[1]{\textcolor{red}{ $\rightarrow$ #1}}
+\newcommand{\figsrc}[1]{\\ \textcolor{gray}{\tiny{Figure source: #1}}}
+
+\newcommand{\myvec}[1]{\underline{#1}}
+\newcommand{\mymat}[1]{\underline{\underline{#1}}}
+\newcommand{\iaindu}[1]{\mymat{#1}}
+\newcommand{\iainsu}[1]{\myvec{#1}}
+
+\newcommand{\igjlight}{\textcolor{red}{\textbf{$\bigstar$}}}
+\newcommand{\igjstar}{\textcolor{red}{\textbf{$\bigstar$}}}
+
+\newcommand{\myglossary}{\textcolor{gray}{\tiny{($w,m$ wildtype, mutant copy nums; $h = m/(w+m)$, $\lambda_i, \beta_i$ replication; $\nu_i, \delta_i$ degradation; $\phi_i$ deterministic parts; $\xi_i$ fluctuation parts)}} }
+
+\newcommand\importantstuff[3]{
+  \node[black!20!white] at (#1+0.08,#2-0.08) {
+    \scalebox{2}{\large{#3}}
+  };
+  \node at (#1,#2) {
+    \scalebox{2}{\large{#3}}
+  };
+}
+
+\newenvironment{myitemize}
+{ \begin{itemize}
+    \setlength{\itemsep}{0pt}
+    \setlength{\parskip}{0pt}
+    \setlength{\parsep}{0pt}     }
+{ \end{itemize}                  } 
+
+\definecolor{light-gray}{gray}{0.95}
+
+%\usetheme{Darmstadt}
+%\usefonttheme[onlylarge]{structurebold}
+%\setbeamerfont*{frametitle}{size=\normalsize,series=\bfseries}
+%\setbeamertemplate{navigation symbols}{}
+
+% \usecolortheme{crane}
+ % \beamertemplatesolidbackgroundcolor{craneorange!25}
+\setbeamerfont{frametitle}{size=\normalsize}
+
+\makeatletter
+  \newcommand\tinyv{\@setfontsize\tinyv{1pt}{6}}
+\makeatother
+
+\newcommand{\figcred}[1]{\vspace{0.2cm} \footnotesize{\textcolor{gray}{(#1)}} \normalsize}
+\newcommand{\citecred}[1]{\tiny{\textcolor{gray}{(#1)}} \normalsize}
+\newcommand{\bneck}{eLife \textbf{4} e07464 (2015)}
+\newcommand{\cellsys}{Cell Systems \textbf{2} 101 (2016)}
+  \newcommand{\cellrep}{Cell Reports \textbf{7} 2031 (2014)}
+  \newcommand{\ajhg}{IGJ \& Jones, Am J Hum Genet \textbf{99} 1150 (2016)}
+  \newcommand{\sagamb}{Stat Appl Genet Mol Biol \textbf{13} 379 (2014)}
+  \newcommand{\natcomms}{Nat Comms \textbf{9} 2488 (2018)}
+  \newcommand{\cfour}{eLife \textbf{2} e00961 (2014)}
+  \newcommand{\molplant}{Mol Plant (online 2019)}
+    \newcommand{\prsa}{Proc Roy Soc A \textbf{471} 20150050 (2015)}
+    \newcommand{\ogdraw}{OGDraw}
+    \newcommand{\plosbiol}{das Neves et al., PLoS Biol \textbf{8} e1000560 (2010)}
+    \newcommand{\kerr}{Kerr et al., submitted (2019)}
+        \newcommand{\hanne}{Hoitzing et al., PLoS Comput Biol (online 2019)}
+            \newcommand{\significance}{IGJ, Significance \textbf{9} 17 (2012)}
+    \newcommand{\ploscb}{IGJ et al., PLoS Comput Biol \textbf{8} e1002416 (2012)}
+        \newcommand{\imamura}{Yaginuma et al., Sci Rep \textbf{4} 6522 (2014)}
+\makeatletter
+
+\newcommand*\bigcdot{\mathpalette\bigcdot@{.5}}
+\newcommand*\bigcdot@[2]{\mathbin{\vcenter{\hbox{\scalebox{#2}{$\m@th#1\bullet$}}}}}
+\makeatother
