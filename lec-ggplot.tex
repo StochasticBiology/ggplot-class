@@ -44,7 +44,7 @@
       \item To summarise and convey data
       \item To turn data into information
       \item To tell a story
-        \item ... clearly, transparently, honestly, reproducably, beautifully, pre-empting questions
+        \item ... clearly, transparently, honestly, reproducibly, beautifully, pre-empting questions
       \end{itemize}
       \includegraphics[width=\linewidth]{ex-2.png}
 \end{frame}
@@ -57,7 +57,7 @@
 \end{frame}
 
 
-\begin{frame}{Basic principles: aesthetic}
+\begin{frame}{Theory of mind!}
     \begin{itemize}[<+->]
     \item \textbf{Motivation:} A reader will, at first, only spend a couple of seconds glancing at your figure.
       \item That's whether they're skimming an article, looking around at posters, or looking at your slide while they're watching you talk
@@ -119,16 +119,26 @@
 
 \begin{frame}{Basic principles: aesthetic}
   \begin{columns}
-    \begin{column}{0.6\textwidth}
+        \begin{column}{0.6\textwidth}
+      \includegraphics[width=\linewidth]{sans-serifs.png}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+     \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Basic principles: aesthetic}
+  \begin{columns}
+        \begin{column}{0.6\textwidth}
+      \includegraphics[width=\linewidth]{sans-serifs.png}
+    \end{column}
+    \begin{column}{0.5\textwidth}
     \begin{itemize}
     \item Fonts: just use Arial (or Helvetica, though it is slightly more embellished)
     \item Serifs are for guiding the eye through large blocks of text; they complicate text in small sections
     \item Myriad Pro (Illustrator default) looks like we're learning letters in primary school
       \item DejaVu Sans (matplotlib default) looks like the font designer is still learning letters (and kerning) in primary school
     \end{itemize}
-    \end{column}
-    \begin{column}{0.6\textwidth}
-      \includegraphics[width=\linewidth]{sans-serifs.png}
     \end{column}
     \end{columns}
 \end{frame}
@@ -219,7 +229,7 @@
 
 \begin{frame}{Basic principles: production}
     \begin{itemize}
-    \item My approach:
+    \item My approach (for compatibility):
     \item[] \texttt{\textcolor{red}{png}("filename.png", width=\textcolor{blue}{400}*\textcolor{orange}{sf}, height=\textcolor{blue}{300}*\textcolor{orange}{sf}, res=72*\textcolor{orange}{sf})}
       \item[] \texttt{print(} (plot command) \texttt{)}
       \item[] \texttt{dev.off()}
@@ -276,7 +286,7 @@
 \begin{frame}{Data styling}
     \begin{itemize}
     \item Geoms have a set of `attributes' which may be connected to data (via \texttt{aes}) or specified otherwise
-      \item[] e.g. \texttt{geom\_point(aes(x=x,y=y,colour=group), size=2, alpha=0.5)}
+      \item[] e.g. \texttt{geom\_point(\textcolor{blue}{aes(x=x,y=y,colour=group)}, \textcolor{purple}{size=2, alpha=0.5})}
     \item Common ones:
       \begin{itemize}
       \item \texttt{size}
@@ -309,7 +319,6 @@
        \item \texttt{smooth}: smoothed lines, including regression (\texttt{method=''lm''})
              \item \texttt{tile}: filled tiles (specifying fill colour \texttt{fill}); also \texttt{rect}
                \item \texttt{text}, \texttt{label}, \texttt{text\_repel}*: text (specifying text \texttt{label}) with and without box, and avoiding overlaps
-                 \item \texttt{bin\_2d}: density of points in 2D space
                \end{itemize}
 \end{frame}
 
@@ -384,6 +393,7 @@
 \begin{frame}{Plot theme styling}
     \begin{itemize}
     \item Every part of the plot is addressable as an element
+      \item \texttt{element\_}... functions take styling arguments: \texttt{text}, \texttt{line}, \texttt{rect}, ...
     \item Overall \texttt{theme\_}...\texttt{()}: \texttt{light}, \texttt{minimal}, \texttt{bw}, \texttt{classic}
     \item \texttt{theme(}...\texttt{)}:
       \begin{itemize}
@@ -464,6 +474,10 @@
   \includegraphics[width=.4\linewidth]{ggplot-plant.png}   \includegraphics[width=.4\linewidth]{new-phyt-cover.jpg}
 \end{frame}
 
+\begin{frame}{Which geoms?}
+  \includegraphics[width=.7\linewidth]{ex-published.png}
+\end{frame}
+
 \begin{frame}{Summaries}
     \begin{itemize}
     \item Match scales, colours, fonts (basically, consistent style)
@@ -482,6 +496,7 @@
       \item \textcolor{red}{Plot command} + \textcolor{blue}{data} + \textcolor{brown}{mapping/aesthetic} + \textcolor{purple}{geoms} + \textcolor{gray}{styling options}
       \item Consider PNG and SVG(lite)
       \item Use the internet!
+        \item Theory of mind!
         \item Be creative, transparent, and thoughtful!
     \end{itemize}
     \end{column}

@@ -42,7 +42,7 @@ base.plot.xy + geom_line(aes(color=group)),
 base.plot.xy + geom_smooth(aes(color=group, fill=group), method="lm"),
 base.plot.xy + geom_text(aes(color=group, label=group)),
 base.plot.xy + geom_point(aes(color=group)) + geom_text_repel(aes(color=group,label=group)),
-base.plot.xy + geom_smooth(aes(color=group, fill=group), method="lm") + geom_point() + facet_wrap(~ group),
+base.plot.xy + geom_smooth(aes(color=group, fill=group), method="lm") + geom_point(aes(color=group)) + facet_wrap(~ group),
 labels=c("point", "line", "smooth", "text", "point+text_repel", "smooth+point [facet]")
 )
 dev.off()
